@@ -12,8 +12,6 @@ import org.slf4j.LoggerFactory;
  * <p>
  * a^2 + b^2 = c^2
  */
-
-
 public class SimpleTriangle {
 
   private static final Logger logger = LoggerFactory.getLogger(SimpleTriangle.class.getName());
@@ -26,6 +24,10 @@ public class SimpleTriangle {
   @Getter
   private final TargetVar targetVar;
 
+  /**
+   * Generates random exercise.
+   * Limit to the range of `a`,`b` and `c` to practice the use of the formula, not do complex pow and sqrt calculation
+   */
   @SneakyThrows
   public SimpleTriangle() {
     Random r = new Random();
@@ -81,7 +83,8 @@ public class SimpleTriangle {
     this.c = c;
 
     final double tempC = SimpleTriangle.calculateC(this.a, this.b);
-    if (tempC - c != 0) {
+
+    if (tempC - c != 0) { // or tempC == c; to validate the input values satisfy the base conditions
       throw new SimpleTriangleGenerationException("Input values invalid");
     }
 
